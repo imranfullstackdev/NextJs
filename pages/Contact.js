@@ -1,7 +1,15 @@
 import Navbar from "./Component/Navbar";
 import Link from "next/link";
-
-const contact = ({ data }) => {
+export const getStaticProps = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await res.json();
+  return {
+    props: {
+      data,
+    },
+  };
+};
+const contact = ({data}) => {
   return (
     <>
       <Navbar />
@@ -23,3 +31,4 @@ const contact = ({ data }) => {
 };
 
 export default contact;
+
